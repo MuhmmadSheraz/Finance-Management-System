@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finace Management App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="transaction.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="mainWrappertransaction">
+        <!-- Header -->
+        <div class="container-fluid header">
+            <div class="d-flex box  text-white">
+                <div class="mr-auto p-2 mt-3">
+                    <h3>Save Here</h3>
+                </div>
+                <div class="pt-3 ">Welcome <span id="userNameTransaction"></span> <img class="userImg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-hm-8mCuj79HloMhzHeqA2kmnWGzc9rWihf9Fj32yQiQETTL0&usqp=CAU"
+                        alt=""></div>
+                <div class="p-2 mt-3"><button class="noButton" onclick="logOut()"><i
+                            class="fas fa-sign-out-alt"></i></button></div>
+            </div>
+
+        </div>
+        <!-- buttons  -->
+        <div class="conatainer leadingButton text-center mt-5">
+            <a href="../dashboard/dashboard.html"> <button class="btn btn-warning"> <i class="fas fa-arrow-left"></i>
+                    DashBoard</button></a>
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal"> <i
+                    class="fas fa-arrow-right"></i>Add Category</button>
+        </div>
+        <!-- Transaction Table -->
+
+        <div class="transactionTable container mt-2">
+            <!-- Filter -->
+            <h4 class="text-center my-3">Filters</h4>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Year</label>
+                            </div>
+                            <select class="custom-select" id="yearSelectFilter">
+                                <option selected value="0">Select Year</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020 </option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Month</label>
+                            </div>
+                            <select class="custom-select" id="monthSelectFilter">
+                                <option selected value="0">Select Month</option>
+                                <option value="0">Jan</option>
+                                <option value="1">Feb</option>
+                                <option value="2">Mar</option>
+                                <option value="3">Apr</option>
+                                <option value="4">May</option>
+                                <option value="5">Jun</option>
+                                <option value="6">Jul</option>
+                                <option value="7">Aug</option>
+                                <option value="8">Sept</option>
+                                <option value="9">Oct</option>
+                                <option value="10">Nov</option>
+                                <option value="11">Dec</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                            </div>
+                            <select class="custom-select" id="categorySelectFilter">
+                                <option selected value="0">Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Amount</label>
+                            </div>
+                            <input required type="text" class="form-control" placeholder="Amount" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <button class="btn btn-dark text-white"> <i class="fas fa-filter"></i> Filter</button>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-center my-3">Transactions</h1>
+            <table class="table table-striped">
+                <thead class="tableHeader thead">
+                    <tr>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Description</th>
+                        <!-- Income Button -->
+                        <th scope="col"><button class="noButton" type="button" data-toggle="modal"
+                                data-target="#exampleModalCenter">Income <i
+                                    class=" green fas fa-plus-circle"></i></button> </th>
+                        <th scope="col"><button class="noButton" type="button" data-toggle="modal"
+                                data-target="#expenseModalBox">Expense <i class=" red fas fa-minus-circle"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td scope="row">1</td>
+                        <td>Mark</td>
+                        <td>@Description</td>
+                        <td class="green">Otto</td>
+                        <td class="red">@mdo</td>
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Income Modal -->
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="addIncomeModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addIncomeModal">Add Income</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date</label>
+                                <div class="input-group">
+                                    <input required type="date" id="incomeDate" name="birthday">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Description</label>
+                                <input required type="email" class="form-control" id="incomedescription"
+                                    aria-describedby="emailHelp">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Select Category</label>
+                                <div class="input-group">
+                                    <select class="custom-select" id="incomeCategory"
+                                        aria-label="Example select with button addon">
+                                        <option selected value="0">Choose...</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Amount</label>
+                                <input required type="number" id="incomeAmount" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="addExpense" class="btn btn-success" onclick="addIncomeData()">Add
+                            Income</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expense Modal -->
+
+        <div class="modal fade" id="expenseModalBox" tabindex="-1" role="dialog" aria-labelledby="addIncomeModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addIncomeModal">Add expense</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date</label>
+                                <div class="input-group">
+                                    <input required type="date" id="expenseDate" name="birthday">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Description</label>
+                                <input required type="email" class="form-control" id="expensedescription"
+                                    aria-describedby="emailHelp">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Select Category</label>
+                                <div class="input-group">
+                                    <select class="custom-select" id="expenseCategory"
+                                        aria-label="Example select with button addon">
+                                        <option selected value="0">Choose...</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Upload Slip Bill etc</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Amount</label>
+                                <input required type="number" id="expenseAmount" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="addExpense" class="btn btn-danger" onclick="addexpenseData()">Add
+                            Income</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add category -->
+
+        <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="categoryModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="categoryName">Enter Category</label>
+                                <input required type="email" class="form-control" id="categoryName">
+
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" onclick="addCategoryName()">Add Category</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src=" https://kit.fontawesome.com/e6eab47809.js" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="./transaction.js"></script>
+</body>
+
+</html>

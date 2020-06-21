@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Oswald", sans-serif;
+}
+.mainWrapper {
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  background-attachment: fixed;
+  background-image: url(../images/bg.jpg);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.formAll {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bold {
+  font-weight: bold;
+}
