@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finace Management App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+    <div class="mainWrapperdashbaord">
+        <!-- Header -->
+        <div class="container-fluid header">
+            <div class="d-flex box  text-white">
+                <div class="mr-auto p-2 mt-3">
+                    <h3>Save Here</h3>
+                </div>
+                <div class="pt-3 ">Welcome <span id="userName">Sheraz</span> <img class="userImg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-hm-8mCuj79HloMhzHeqA2kmnWGzc9rWihf9Fj32yQiQETTL0&usqp=CAU"
+                        alt=""></div>
+                <div class="p-2 mt-3"> <a href="#"><button onclick="logOut1()" class=noButton><i
+                                class="fas fa-sign-out-alt"></i></button></a></div>
+
+            </div>
+        </div>
+
+        <div>
+            <!-- Current Balance  -->
+            <div class=" container-fluid text-center p-4   currentbalance">
+                Your Current Balance <span id="currentBalance">10,000PKR</span>
+            </div>
+        </div>
+        <div class="container-fluid text-white">
+
+        </div>
+        <div class="text-center">
+            <a href="../transaction/transaction.html"><button class="btn btn-warning btn-lg my-3">MY
+                    Transaction</button></a>
+        </div>
+
+        <!-- Chart -->
+
+        <div class="containerfluid chart">
+
+            <h1 class="p-5 chartHeader">Income Overview</h1>
+
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src=" https://kit.fontawesome.com/e6eab47809.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="./dashboard.js"></script>
+</body>
+
+</html>

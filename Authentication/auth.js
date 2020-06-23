@@ -179,19 +179,8 @@ let signInUser = () => {
                         window.location.href = "../transaction/transaction.html"
                     }, 1000)
                 }
+
             })
-            // for (let i = 0; i < gettingLocalStorage.length; i++) {
-
-            //     if (signEmail == gettingLocalStorage[i].email && signPassword == gettingLocalStorage[i].password1) {
-            //         let uid = gettingLocalStorage[i].id
-            //         localStorage.setItem('uid', JSON.stringify(uid))
-            //         setTimeout(() => {
-            //             window.location.href = "../transaction/transaction.html"
-            //         }, 1000)
-            //     }
-
-
-            // }
 
 
 

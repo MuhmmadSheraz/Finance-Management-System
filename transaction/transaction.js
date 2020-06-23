@@ -12,12 +12,7 @@ let hello = () => {
 window.onload = hello()
 getMonthAndYear()
 
-// function openExpenseModal() {
-//     document.getElementById('addIncomeModal').innerHTML = "Add Expense"
-//     let expenseBtn = document.getElementById('addExpense')
-//     expenseBtn.textContent = "Add Expense"
-//     expenseBtn.setAttribute('class', "btn btn-danger")
-// }
+
 // LogOut User
 let logOut = () => {
     window.location.href = "../Authentication/index.html"

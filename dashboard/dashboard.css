@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.header {
+  height: 80px;
+  background-color: cornflowerblue;
+}
+body {
+  font-family: "Oswald", sans-serif;
+}
+
+.userImg {
+  height: 50px;
+  border-radius: 25px;
+}
+.box {
+  align-items: center;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: #5bc236;
+}
+.bg {
+  background-color: #69b16f;
+}
+.bg1 {
+  background-color: #deb342;
+}
+.noButton {
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  outline: none !important;
+}
+.fa-minus-circle,
+.fa-plus-circle {
+  font-size: 22px;
+}
+.currentbalance {
+  background-color: #69b16f;
+  height: 180px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.total_income {
+  background-color: #69b16f;
+
+  color: black;
+  text-align: center;
+  font-size: 50px;
+}
+
+.total_expense {
+  color: black;
+  text-align: center;
+  font-size: 50px;
+}
+
+.check {
+  background-color: rosybrown;
+}
+
+.chartHeader {
+  background-color: #69b16f;
+  color: white;
+}
+.noButton {
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  outline: none !important;
+}
