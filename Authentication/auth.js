@@ -2,191 +2,128 @@ function signUp() {
     document.getElementById('singUp').hidden = false
     document.getElementById('signIn').hidden = true
 }
+
 function signIn() {
     document.getElementById('singUp').hidden = true
     document.getElementById('signIn').hidden = false
 }
+// Helkoooooooooooooooooooooooooooooooooooooooooooooooooo
+
+(function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            setTimeout(() => {
+                window.location.href = "../dashboard/dashboard.html"
+            }, 1500)
+        } else {
+            console.log("NO user")
 
 
-// globlal Varibales
-let updateduserName = '';
-let updateEmail = '';
-let updatePassword = '';
-let updateConfirmPassword = '';
-let updatedgender = '';
-let id = Math.floor(Math.random() * 100);
+        }
+    });
 
-// IF USER SIGNED UP
-function signUpUser() {
-    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
+}())
+
+// When User Signed Up
+let signUpUser = () => {
+
     let userName = document.getElementById('userName').value
-    let email = document.getElementById("userEmail").value
-    let password = document.getElementById("password").value
-    let confirmpassword = document.getElementById("confirmpassword").value
-    // Condition For Validation
+    let email = document.getElementById('userEmail').value
+    let password = document.getElementById('password').value
+    let confirmPassword = document.getElementById('confirmpassword').value
+    let userID;
+    if (email, password && password == confirmPassword) {
+        auth.createUserWithEmailAndPassword(email, password).then(e => {
+            userID = e.user.uid;
+            db.collection('user').doc(userID).set({
+                userId: userID,
+                userEmail: email,
+                userName: userName,
+            }).then(() => {
+                let obj = {
+                    userId: userID,
+                    userEmail: email,
+                    userName: userName,
+                }
+                localStorage.setItem("FinaceUser", JSON.stringify(obj))
+                console.log(obj)
+                console.log("Signed Up Successfully")
+            })
+        }).catch(err => {
+            if (err.message == "The email address is already in use by another account.") {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Email Already Used',
 
-    if (userName == "" || email == "" || password == "" || confirmpassword == "") {
-
+                })
+            }
+        })
+    } else if (userEmail == "" || userName == "" || password == "" || confirmPassword == "") {
         return Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Please Fill All Field ',
+
+            text: 'Please Fill All The Fields',
 
         })
-
-    }
-    // UserName
-
-    if (userName.length < 3) {
-        return Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'UserName Is Not Correct',
-
-        })
-    }
-    else {
-        updateduserName = userName
-        console.log(updateduserName)
-
-    }
-
-    // // Email
-
-    if (userName.length < email.indexOf('@' <= 0) || email.charAt(email.length - 4) != '.' || email.charAt(1) == '@' || email.charAt(2) == '@' || email.charAt(3) == '@') {
-        return Swal.fire({
+    } else if (email.length < email.indexOf('@' <= 0) || email.charAt(email.length - 4) != '.' || email.charAt(1) == '@' || email.charAt(2) == '@' || email.charAt(3) == '@') {
+        Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Please Use Correct Form Of  Email',
 
         })
-    } else {
-        updateEmail = email
-        console.log(updateEmail)
+    } else if (!password.match(confirmPassword) || password == "") {
 
-
-    }
-
-    // PASSWORD
-
-    if (!password.match(passw) || password == "") {
-        return Swal.fire({
+        Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'password Should contain UpperCAse LowerCase And Symbols With Number',
 
         })
-    } else {
-        updatePassword = password
-        console.log(updatePassword)
-
     }
     // CONFIRM PASSW0RD
-    if (!confirmpassword == password) {
-        return Swal.fire({
+    else if (confirmPassword !== password) {
+        Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'password Are Not Same',
 
         })
     }
-    else {
-        updateConfirmPassword = confirmpassword
+}
 
-    }
-
-
-    // lOCAL sTORAGWE wOEDK
-
-    let myArr = []
-
-    let SignUparr = JSON.parse(localStorage.getItem('userinfo'))
-
-    if (SignUparr == null) {
-        let obj = {
-            name: updateduserName,
-            id,
-            email: updateEmail,
-            password1: updatePassword,
-        }
-        myArr.push(obj)
-        let SignUparr = localStorage.setItem('userinfo', JSON.stringify(myArr))
-        localStorage.setItem('uid', JSON.stringify(id))
-
-    }
-    else {
-        for (let i = 0; i < SignUparr.length; i++) {
-            if (updateEmail == SignUparr[i].email) {
-                return Swal.fire({
-                    icon: 'info',
-                    title: 'Oops...',
-                    text: 'Email Already Exist',
-                })
-            }
-        }
-        let obj2 = {
-            name: updateduserName,
-            id,
-            email: updateEmail,
-            password1: updatePassword,
-        }
-        SignUparr.push(obj2)
-        localStorage.setItem('userinfo', JSON.stringify(SignUparr))
-        localStorage.setItem('uid', JSON.stringify(id))
-        Swal.fire({
-            icon: 'success',
-            title: 'SignedIn Successfully',
+// When User Logged In
+let signInUser = () => {
+    let email = document.getElementById('iNuserEmail').value
+    let password = document.getElementById('iNpassword').value
+    let userId;
+    auth.signInWithEmailAndPassword(email, password).then((e) => {
+            userId = e.user.uid
+            console.log(email, password)
+            db.collection('user').doc(userId).get().then(e => {
+                let currentUser = e.data()
+                let obj = {
+                    userId: currentUser.userId,
+                    userEmail: currentUser.userEmail,
+                    userName: currentUser.userName,
+                }
+                localStorage.setItem("FinaceUser", JSON.stringify(obj))
+            })
 
         })
-        setTimeout(() => {
-            window.location.href = "../transaction/transaction.html"
-        }, 500)
+        .catch(e => {
+            if (e.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No User Found On This Credits',
 
-    }
-}
-
-
-
-// IF USER SIGNED IN
-let signInUser = () => {
-
-    let signEmail = document.getElementById('iNuserEmail').value
-    let signPassword = document.getElementById('iNpassword').value
-    let gettingLocalStorage = JSON.parse(localStorage.getItem('userinfo'))
-
-    if (signPassword == "" || signEmail == "") {
-        return (Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Fill All The Fields!',
-            footer: '<a href>Why do I have this issue?</a>'
-        }))
-    }
-    else if (signPassword && signEmail) {
-        if (signEmail.charAt(signEmail.length - 4) != '.' || signEmail.charAt(1) == '@' || signEmail.charAt(2) == '@' || signEmail.charAt(3) == '@') {
-            return Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please Use Correct Form Of  Email',
-
-            })
-        } else {
-            let a = gettingLocalStorage.filter(x => {
-                if (signEmail == x.email && signPassword == x.password1) {
-                    let uid = x.id
-                    localStorage.setItem('uid', JSON.stringify(uid))
-                    setTimeout(() => {
-                        window.location.href = "../transaction/transaction.html"
-                    }, 1000)
-                }
-
-            })
+                })
+            }
 
 
-
-        }
-
-    }
+        })
 
 }
-

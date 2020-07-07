@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finace Management App</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="dashboard.css" />
 </head>
@@ -15,54 +14,143 @@
 <body>
     <div class="mainWrapperdashbaord">
         <!-- Header -->
-        <div class="container-fluid header">
-            <div class="d-flex box  text-white">
-                <div class="mr-auto p-2 mt-3">
-                    <h3>Save Here</h3>
-                </div>
-                <div class="pt-3 ">Welcome <span id="userName">Sheraz</span> <img class="userImg"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-hm-8mCuj79HloMhzHeqA2kmnWGzc9rWihf9Fj32yQiQETTL0&usqp=CAU"
-                        alt=""></div>
-                <div class="p-2 mt-3"> <a href="#"><button onclick="logOut1()" class=noButton><i
-                                class="fas fa-sign-out-alt"></i></button></a></div>
+        <nav class="navbar navbar-expand-lg navbar-light navbar_color">
+            <a class="navbar-brand font-weight-bold " href="#">SaveHere</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link active" href="#"> <span class="user_Name">Welcome</span> <span class="user_Name" id="userName"></span>
+                        <span class=" pr-3 userName" id="userNameTransaction"></span> <img class="userImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-hm-8mCuj79HloMhzHeqA2kmnWGzc9rWihf9Fj32yQiQETTL0&usqp=CAU" alt=""> <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-item nav-link active" href="#"> <button class="noButton" onclick="logOut()">
+                        <i class=" text-dark  fas  fa-sign-out-alt"></i>
+                    </button>
 
+                    </a>
+
+
+
+                </div>
             </div>
-        </div>
+        </nav>
 
         <div>
             <!-- Current Balance  -->
-            <div class=" container-fluid text-center p-4   currentbalance">
-                Your Current Balance <span id="currentBalance">10,000PKR</span>
+            <div class=" container-fluid text-center p-3 currentbalance bg">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 m-2 income_wrapper">
+                        <div class="div">
+                            <p>Your Total Income</p>
+                            <p id="totalIncome"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 m-2 income_wrapper">
+                        <div class="div">
+                            <p>Your Total Expense</p>
+                            <p id="totalExpense"> </p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Recent Post ...  -->
+            <div class=" container-fluid text-center p-3 currentbalance bg">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 m-2 income_wrapper">
+                        <div class="div">
+                            <p>Your Recent Income</p>
+                            <div class="row" id="incomeRecent"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 m-2 income_wrapper">
+                        <div class="div">
+                            <p>Your Recent Expense</p>
+                            <div class="row" id="expenseRecent">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="container-fluid text-white">
 
-        </div>
         <div class="text-center">
-            <a href="../transaction/transaction.html"><button class="btn btn-warning btn-lg my-3">MY
-                    Transaction</button></a>
+            <a href="../transaction/transaction.html"><button class="btn btn-warning btn-lg my-3">MY Transaction</button></a>
         </div>
 
         <!-- Chart -->
 
         <div class="containerfluid chart">
-
-            <h1 class="p-5 chartHeader">Income Overview</h1>
+            <div class="chartHeader py-3 px-5">
+                <div class="float-right mt-2">
+                    <div class="input-group ">
+                        <div class="input-group-prepend ">
+                            <label class="input-group-text" for="inputGroupSelect01">Year</label>
+                        </div>
+                        <select class="custom-select" id="yearSelectFilter">
+                            <option selected value="">Select Year</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020 </option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="incomeChartText">Income OverView</p>
+            </div>
 
             <canvas id="myChart" width="400" height="400"></canvas>
         </div>
     </div>
+    <!-- !-- Firebase -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBDAZul_vgG2s7cnmsfhPufh-3S8PsqBRU",
+            authDomain: "financemanagement-69ffa.firebaseapp.com",
+            databaseURL: "https://financemanagement-69ffa.firebaseio.com",
+            projectId: "financemanagement-69ffa",
+            storageBucket: "financemanagement-69ffa.appspot.com",
+            messagingSenderId: "48348335494",
+            appId: "1:48348335494:web:68cc06be01432792523007",
+            measurementId: "G-G6EXGTYM2C"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+    </script>
+    <!-- //Firebase  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src=" https://kit.fontawesome.com/e6eab47809.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="./dashboard.js"></script>
 </body>
 

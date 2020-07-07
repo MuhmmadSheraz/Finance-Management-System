@@ -31,3 +31,14 @@ body {
 .bold {
   font-weight: bold;
 }
+.signInAlready:hover {
+  cursor: pointer;
+  color: #f4f4f4;
+  text-decoration: none;
+  outline: none !important;
+}
+.signInAlready {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}

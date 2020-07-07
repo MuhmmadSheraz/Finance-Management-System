@@ -1,78 +1,126 @@
 * {
-  margin: 0;
-  padding: 0px;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
 }
+
 .header {
-  height: 80px;
-  background-color: cornflowerblue;
+    height: 80px;
+    background-color: cornflowerblue;
 }
+
 body {
-  font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
+    background-color: #E9EAED;
 }
 
 .userImg {
-  height: 50px;
-  border-radius: 25px;
+    height: 50px;
+    border-radius: 25px;
 }
+
 .box {
-  align-items: center;
+    align-items: center;
 }
 
 .red {
-  color: red;
+    color: red;
 }
+
 .green {
-  color: #5bc236;
+    color: #5bc236;
 }
+
 .bg {
-  background-color: #69b16f;
+    background-color: ;
 }
+
 .bg1 {
-  background-color: #deb342;
+    background-color: #deb342;
 }
+
 .noButton {
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  outline: none !important;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    outline: none !important;
 }
+
 .fa-minus-circle,
 .fa-plus-circle {
-  font-size: 22px;
+    font-size: 22px;
 }
-.currentbalance {
-  background-color: #69b16f;
-  height: 180px;
-  color: white;
-  font-size: 50px;
-  font-weight: bold;
-}
-.total_income {
-  background-color: #69b16f;
 
-  color: black;
-  text-align: center;
-  font-size: 50px;
+.currentbalance {
+    background-color: #E3E4E7;
+    height: 250px;
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.total_income {
+    background-color: #69b16f;
+    color: black;
+    text-align: center;
+    font-size: 50px;
 }
 
 .total_expense {
-  color: black;
-  text-align: center;
-  font-size: 50px;
+    color: black;
+    text-align: center;
+    font-size: 50px;
 }
 
 .check {
-  background-color: rosybrown;
+    background-color: rosybrown;
 }
 
 .chartHeader {
-  background-color: #69b16f;
-  color: white;
+    background-color: #69b16f;
+    color: white;
+    height: 100px;
 }
+
 .noButton {
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  outline: none !important;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    outline: none !important;
+}
+
+.fa-sign-out-alt {
+    font-size: 23px;
+    margin-top: 12px;
+}
+
+.userName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar_color {
+    background-color: #A8AFB8;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.income_wrapper {
+    border: 3px solid skyblue;
+}
+
+.user_Name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.amountIcon {
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.incomeChartText {
+    font-size: 35px;
 }
