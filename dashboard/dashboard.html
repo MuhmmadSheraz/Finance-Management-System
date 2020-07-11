@@ -12,21 +12,24 @@
 </head>
 
 <body>
-    <div class="mainWrapperdashbaord">
+    <div id="loader">
+        <img src="../images/Silver-Balls-Swinging.gif" class="loaderImg" alt="">
+    </div>
+    <div class="mainWrapperdashbaord" id="mainDash" hidden>
         <!-- Header -->
         <nav class="navbar navbar-expand-lg navbar-light navbar_color">
             <a class="navbar-brand font-weight-bold " href="#">SaveHere</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link active" href="#"> <span class="user_Name">Welcome</span> <span class="user_Name" id="userName"></span>
                         <span class=" pr-3 userName" id="userNameTransaction"></span> <img class="userImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-hm-8mCuj79HloMhzHeqA2kmnWGzc9rWihf9Fj32yQiQETTL0&usqp=CAU" alt=""> <span class="sr-only">(current)</span>
                     </a>
                     <a class="nav-item nav-link active" href="#"> <button class="noButton" onclick="logOut()">
-                        <i class=" text-dark  fas  fa-sign-out-alt"></i>
-                    </button>
+                            <i class=" text-dark  fas  fa-sign-out-alt"></i>
+                        </button>
 
                     </a>
 
@@ -38,19 +41,21 @@
 
         <div>
             <!-- Current Balance  -->
-            <div class=" container-fluid text-center p-3 currentbalance bg">
+            <div class=" container-fluid text-center  mb-3 currentbalance bg">
                 <div class="row justify-content-center">
-                    <div class="col-md-4 m-2 income_wrapper">
+                    <div class="col-lg-5 col-md-5 income_wrapper">
                         <div class="div">
-                            <p>Your Total Income</p>
+                            <p> <img class="d_icon" src="../images/money.png" alt="totalExpenseImage" /> Your Total Income
+                            </p>
                             <p id="totalIncome"></p>
 
                         </div>
                     </div>
 
-                    <div class="col-md-4 m-2 income_wrapper">
+                    <div class="col-lg-5 col-md-5 expense_wrapper">
                         <div class="div">
-                            <p>Your Total Expense</p>
+                            <p> <img class="d_icon" src="../images/money 2.png" alt="totalExpenseImage" /> Your Total Expense
+                            </p>
                             <p id="totalExpense"> </p>
 
                         </div>
@@ -58,45 +63,71 @@
 
                 </div>
             </div>
+
             <!-- Recent Post ...  -->
-            <div class=" container-fluid text-center p-3 currentbalance bg">
+
+            <!-- Income Table -->
+            <div class=" container-fluid text-center recentPost mt-5 bg">
                 <div class="row justify-content-center">
-                    <div class="col-md-4 m-2 income_wrapper">
-                        <div class="div">
-                            <p>Your Recent Income</p>
-                            <div class="row" id="incomeRecent"></div>
-
-                        </div>
+                    <div class="col-lg-5 col-md-5 income_wrapper" id="mainIncome">
+                        <p class="recentPostHeading my-2">
+                            <img class="d_icon" src="../images/history.png" /> Your Recent <span class="green">Income</span>
+                        </p>
+                        <table class="table table-responsive myTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sr.No</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Cateory</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incomeTableBody" class="text-center">
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success my-3" onclick="more('income')">More Incomes</button>
                     </div>
-
-                    <div class="col-md-4 m-2 income_wrapper">
-                        <div class="div">
-                            <p>Your Recent Expense</p>
-                            <div class="row" id="expenseRecent">
-
-                            </div>
-
-                        </div>
+                    <!-- Expense Table  -->
+                    <div class="col-lg-5 col-md-5 expense_wrapper" id="mainExpense">
+                        <p class="recentPostHeading my-2"><img class="d_icon" src="../images/history.png" /> Your Recent <span class="red">Expense</span></p>
+                        <table class="table table-responsive myTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sr.No</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Cateory</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseTableBody" class="text-center">
+                            </tbody>
+                        </table>
+                        <button class="btn btn-danger my-3" onclick="more('expense')">More Expenses</button>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <div class="text-center">
-            <a href="../transaction/transaction.html"><button class="btn btn-warning btn-lg my-3">MY Transaction</button></a>
+        <div class="text-center container">
+            <a href="../transaction/transaction.html" class="anchor">
+                <button class="btn btn-warning btn-lg my-5 block">
+            MY Transaction 
+        </button>
+            </a>
         </div>
 
         <!-- Chart -->
 
-        <div class="containerfluid chart">
-            <div class="chartHeader py-3 px-5">
+        <div class="">
+            <div class="pt-3 chartHeader px-5">
                 <div class="float-right mt-2">
-                    <div class="input-group ">
-                        <div class="input-group-prepend ">
+                    <div class="input-group dateChart">
+                        <div class="input-group-prepend dateChart">
                             <label class="input-group-text" for="inputGroupSelect01">Year</label>
                         </div>
-                        <select class="custom-select" id="yearSelectFilter">
+                        <select class="custom-select" id="yearSelectFilter" onchange="filterByYear(this)">
                             <option selected value="">Select Year</option>
                             <option value="2018">2018</option>
                             <option value="2019">2019</option>
@@ -117,7 +148,7 @@
                 <p class="incomeChartText">Income OverView</p>
             </div>
 
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="myChart" width="400"></canvas>
         </div>
     </div>
     <!-- !-- Firebase -->

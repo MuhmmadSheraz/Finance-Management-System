@@ -15,7 +15,14 @@ function signIn() {
             setTimeout(() => {
                 window.location.href = "../dashboard/dashboard.html"
             }, 1500)
+
+            document.getElementById('loader').hidden = false
+            document.getElementById('main').hidden = true
+
         } else {
+            document.getElementById('loader').hidden = true
+            document.getElementById('main').hidden = false
+
             console.log("NO user")
 
 
@@ -96,6 +103,7 @@ let signUpUser = () => {
 
 // When User Logged In
 let signInUser = () => {
+
     let email = document.getElementById('iNuserEmail').value
     let password = document.getElementById('iNpassword').value
     let userId;
@@ -112,6 +120,7 @@ let signInUser = () => {
                 localStorage.setItem("FinaceUser", JSON.stringify(obj))
             })
 
+            document.getElementById('loader').hidden = true
         })
         .catch(e => {
             if (e.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {

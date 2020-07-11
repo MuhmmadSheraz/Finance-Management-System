@@ -6,12 +6,11 @@
 
 .header {
     height: 80px;
-    background-color: cornflowerblue;
 }
 
 body {
     font-family: "Oswald", sans-serif;
-    background-color: #E9EAED;
+    background-color: #E9EAED
 }
 
 .userImg {
@@ -35,10 +34,6 @@ body {
     background-color: ;
 }
 
-.bg1 {
-    background-color: #deb342;
-}
-
 .noButton {
     align-items: center;
     border: none;
@@ -52,24 +47,13 @@ body {
 }
 
 .currentbalance {
-    background-color: #E3E4E7;
-    height: 250px;
+    background-color: #E9EAED;
+    height: 150px;
     color: black;
     font-size: 35px;
     font-weight: bold;
-}
-
-.total_income {
-    background-color: #69b16f;
-    color: black;
-    text-align: center;
-    font-size: 50px;
-}
-
-.total_expense {
-    color: black;
-    text-align: center;
-    font-size: 50px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .check {
@@ -80,6 +64,10 @@ body {
     background-color: #69b16f;
     color: white;
     height: 100px;
+}
+
+.chart {
+    background-color: #69b16f;
 }
 
 .noButton {
@@ -107,8 +95,14 @@ body {
     font-size: 25px;
 }
 
-.income_wrapper {
-    border: 3px solid skyblue;
+.income_wrapper,
+.expense_wrapper {
+    border: 3px solid #A8AFB8;
+    border-radius: 10px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.36);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.36);
+    margin: 10px;
 }
 
 .user_Name {
@@ -123,4 +117,119 @@ body {
 
 .incomeChartText {
     font-size: 35px;
+    letter-spacing: 1px;
+}
+
+.recentPostHeading {
+    font-weight: bold;
+    padding: 5px;
+    font-size: 25px;
+}
+
+.d_icon {
+    height: 50px;
+}
+
+#myChart {
+    height: 500px !important;
+}
+
+.block {
+    display: block;
+    color: white;
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #69b16f;
+}
+
+.anchor {
+    text-decoration: none !important;
+}
+
+.myTable {
+    display: table !important;
+}
+
+.loaderImg {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Media Querries */
+
+@media(max-width:875px) {
+    .currentbalance {
+        background-color: #E3E4E7;
+        height: 150px;
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .myTable {
+        display: block !important;
+    }
+}
+
+@media(max-width:768px) {
+    .currentbalance {
+        background-color: #E3E4E7;
+        height: 250px;
+        color: black;
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 70px;
+    }
+    .myTable {
+        display: table !important;
+    }
+}
+
+@media(max-width:600px) {
+    .incomeChartText {
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+}
+
+@media(max-width:500px) {
+    .incomeChartText {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .dateChart {
+        height: 30px;
+    }
+    #yearSelectFilter {
+        height: 30px;
+    }
+    .myTable {
+        display: block !important;
+    }
+    .recentPost {
+        padding: 0 25px;
+        margin-top: 55px !important;
+    }
+}
+
+@media(max-width:400) {
+    .incomeChartText {
+        font-size: 20px;
+    }
+    .dateChart {
+        height: 30px;
+    }
+    #yearSelectFilter {
+        height: 35px;
+    }
 }
