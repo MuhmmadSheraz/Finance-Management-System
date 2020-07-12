@@ -1,8 +1,7 @@
 //Logout
 let logOut = () => {
     auth.signOut().then(() => {
-        window.location.href = "../Authentication/index.html"
-
+        window.location.href = "../index.html"
     })
     console.log("logged Out")
     localStorage.clear()
@@ -274,7 +273,7 @@ recentPost = () => {
                 tableBody.append(tr)
             })
         } else {
-            document.getElementById('mainExpense').innerHTML = `<h1 class="my-5">No Recent Expense Added</h1>`
+            document.getElementById('mainExpense').innerHTML = `<h1 class="my-5">No Recent Expenses</h1>`
         }
 
     })
@@ -312,7 +311,7 @@ recentPost = () => {
                 tableBody.append(tr)
             })
         } else {
-            document.getElementById('mainIncome').innerHTML = `<h1 class="my-5">No Recent Income Added</h1>`
+            document.getElementById('mainIncome').innerHTML = `<h1 class="my-5">No Recent Incomes</h1>`
         }
     })
 }
@@ -328,12 +327,9 @@ recentPost = () => {
             let localData = JSON.parse(localStorage.getItem("FinaceUser"))
             let userName = document.getElementById('userName').innerText = localData.userName
 
-            document.getElementById('loader').hidden = true
-            document.getElementById('mainDash').hidden = false
-
         } else {
 
-            location.href = "../Authentication/index.html"
+            location.href = "../index.html"
         }
     })
 }())
@@ -350,7 +346,7 @@ render = () => {
     db.collection("userTransaction").where("userId", "==", userId).get().then(e => {
         e.forEach(x => {
             if (x.data().expense) {
-                expense += parseInt(x.data().amount)
+                expense += parseInt(x.data().amount);
             } else {
                 income += parseInt(x.data().amount)
             }
@@ -362,7 +358,8 @@ render = () => {
         }, 500)
         document.getElementById('totalExpense').innerHTML = ` PKR ${expense} <i class=" red amountIcon fas fa-arrow-down"></i>   `
         document.getElementById('totalIncome').innerHTML = `PKR ${income} <i class=" green  amountIcon fas fa-arrow-up"></i>    `
-
+        document.getElementById('loader').hidden = true;
+        document.getElementById('mainDash').hidden = false;
     })
 }
 let more = () => {

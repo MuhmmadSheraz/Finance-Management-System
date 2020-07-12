@@ -44,8 +44,9 @@
             <div class=" container-fluid text-center  mb-3 currentbalance bg">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-5 income_wrapper">
-                        <div class="div">
-                            <p> <img class="d_icon" src="../images/money.png" alt="totalExpenseImage" /> Your Total Income
+                        <div class="mt-2">
+                            <p> <img class="d_icon" src="../images/money.png" alt="totalExpenseImage" /> 
+                                Your Total Income
                             </p>
                             <p id="totalIncome"></p>
 
@@ -53,7 +54,7 @@
                     </div>
 
                     <div class="col-lg-5 col-md-5 expense_wrapper">
-                        <div class="div">
+                        <div class="mt-2">
                             <p> <img class="d_icon" src="../images/money 2.png" alt="totalExpenseImage" /> Your Total Expense
                             </p>
                             <p id="totalExpense"> </p>
@@ -112,40 +113,47 @@
 
         <div class="text-center container">
             <a href="../transaction/transaction.html" class="anchor">
-                <button class="btn btn-warning btn-lg my-5 block">
-            MY Transaction 
-        </button>
+                <button class="btn-success btn-lg my-5 block">
+                    MY Transaction 
+                </button>
             </a>
         </div>
 
         <!-- Chart -->
 
         <div class="">
-            <div class="pt-3 chartHeader px-5">
-                <div class="float-right mt-2">
-                    <div class="input-group dateChart">
-                        <div class="input-group-prepend dateChart">
-                            <label class="input-group-text" for="inputGroupSelect01">Year</label>
+            <div class="chartHeader bg-success">
+                <!-- <div class=" mt-2"> -->
+                    <div class="dateChart chart">
+                        <div class="row dateChart">
+                            <div class="col-md-4 col-sm-5 col-12">
+                                <p class="incomeChartText">Income OverView</p>
+                            </div>
+                            <div class="col-md-5 col">
+                            </div>
+                            <div class="col-md-3 col-sm-5 col-12 input-group-prepend yearSelector">
+                                <label class="input-group-text" for="inputGroupSelect01">Year</label>
+                                <select class="custom-select" id="yearSelectFilter" onchange="filterByYear(this)">
+                                    <option selected value="">Select Year</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020 </option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
+                            </div>
                         </div>
-                        <select class="custom-select" id="yearSelectFilter" onchange="filterByYear(this)">
-                            <option selected value="">Select Year</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020 </option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                        </select>
-                    </div>
+                    <!-- </div> -->
                 </div>
-                <p class="incomeChartText">Income OverView</p>
+                <!-- <p class="incomeChartText mt-2">Income OverView</p> -->
             </div>
 
             <canvas id="myChart" width="400"></canvas>

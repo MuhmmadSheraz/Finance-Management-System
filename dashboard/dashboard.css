@@ -10,7 +10,10 @@
 
 body {
     font-family: "Oswald", sans-serif;
-    background-color: #E9EAED
+}
+
+.mainWrapperdashbaord{
+    background-color: #E9EAED;
 }
 
 .userImg {
@@ -28,10 +31,6 @@ body {
 
 .green {
     color: #5bc236;
-}
-
-.bg {
-    background-color: ;
 }
 
 .noButton {
@@ -61,13 +60,12 @@ body {
 }
 
 .chartHeader {
-    background-color: #69b16f;
     color: white;
     height: 100px;
 }
 
 .chart {
-    background-color: #69b16f;
+    padding: 20px;
 }
 
 .noButton {
@@ -142,10 +140,12 @@ body {
     text-decoration: none;
     list-style-type: none;
     padding: 14px 28px;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
     cursor: pointer;
     text-align: center;
-    background-color: #69b16f;
+    /* background-color: #69b16f; */
 }
 
 .anchor {
@@ -157,14 +157,15 @@ body {
 }
 
 .loaderImg {
-    height: 100vh;
-    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.yearSelector{
+    align-items: center;
+}
 
 /* Media Querries */
 
@@ -181,7 +182,7 @@ body {
     }
 }
 
-@media(max-width:768px) {
+@media(max-width:767px) {
     .currentbalance {
         background-color: #E3E4E7;
         height: 250px;
@@ -193,37 +194,43 @@ body {
     .myTable {
         display: table !important;
     }
+    .recentPost {
+        margin-top: 70px !important;
+    }
 }
 
-@media(max-width:600px) {
+@media(max-width:643px) {
     .incomeChartText {
         font-size: 30px;
-        letter-spacing: 1px;
+    }
+}
+
+@media(max-width:575px) {
+    .chartHeader{
+        height: 130px;
+    }
+    .chart{
+        text-align: center;
     }
 }
 
 @media(max-width:500px) {
-    .incomeChartText {
-        font-size: 20px;
-        letter-spacing: 1px;
+    .chartHeader{
+        height: 145px;
     }
     .dateChart {
-        height: 30px;
-    }
-    #yearSelectFilter {
         height: 30px;
     }
     .myTable {
         display: block !important;
     }
-    .recentPost {
-        padding: 0 25px;
-        margin-top: 55px !important;
-    }
+    .chart {
+        padding: 25px;
+    }    
 }
 
-@media(max-width:400) {
-    .incomeChartText {
+@media(max-width:400px) {
+    /* .incomeChartText {
         font-size: 20px;
     }
     .dateChart {
@@ -231,5 +238,8 @@ body {
     }
     #yearSelectFilter {
         height: 35px;
+    } */
+    .recentPost {
+        padding: 0 25px !important;
     }
 }

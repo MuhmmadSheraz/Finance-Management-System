@@ -1,7 +1,7 @@
 // LogOut User
 let logOut = () => {
     auth.signOut()
-    window.location.href = "../Authentication/index.html"
+    window.location.href = "../index.html"
     console.log("logged Out")
     localStorage.clear()
 }
@@ -84,8 +84,6 @@ renderTransactions = (data = null) => {
                         tr.append(tdAmount)
                         tr.append(removeBtn)
                         transactionTableBody.append(tr)
-
-
                     }
 
                 })
@@ -153,7 +151,7 @@ renderTransactions = (data = null) => {
             }
             //Show User Expenses and Incomes
             else {
-                location.href = "../Authentication/index.html"
+                location.href = "../index.html"
             }
         })
     }())
@@ -272,27 +270,23 @@ let addexpenseData = () => {
             })
     }
 
-
-
-
-
-
 }
 
 let addCategoryName = () => {
-    let allCategoriesFilter = document.getElementById('categorySelectFilter').innerHTML = "";
-    let allCategories = document.getElementById('incomeCategory').innerHTML = ''
-    let allCategoriesExpense = document.getElementById('expenseCategory').innerHTML = ''
+    document.getElementById('categorySelectFilter').innerHTML = "";
+    document.getElementById('incomeCategory').innerHTML = ''
+    document.getElementById('expenseCategory').innerHTML = ''
     let localData = JSON.parse(localStorage.getItem('FinaceUser'))
     let categoryName = document.getElementById('categoryName1').value;
     // let userId = localData.userId;
     db.collection('userCategories').add({
         categoryName: categoryName,
         userId: localData.userId
-    }).then(() => {})
-    $('#categoryModal').modal('hide')
-    Snackbar.show({ pos: 'top-center', textColor: "green", text: 'Category Added', backgroundColor: "#E3E4E7" })
-    document.getElementById('categoryName1').innerHTML = "";
+    }).then(() => {
+        $('#categoryModal').modal('hide')
+        Snackbar.show({ pos: 'top-center', textColor: "green", text: 'Category Added', backgroundColor: "#E3E4E7" })
+        document.getElementById('categoryName1').value = "";
+    })
 }
 
 //renderFilteredTransaction
@@ -450,35 +444,33 @@ sortBy = (type) => {
 
             } else if (type == "income") {
 
+                if (x.data().income) {
+                    //CReating Elements
+                    let tr = document.createElement('tr');
+                    let tdSr = document.createElement('td');
+                    let tdDate = document.createElement('td');
+                    let tdCategory = document.createElement('td');
+                    let tdDescription = document.createElement('td');
+                    let tdAmount = document.createElement('td');
+                    let removeBtn = document.createElement('td');
 
-                //CReating Elements
-                let tr = document.createElement('tr')
-                let tdSr = document.createElement('td')
-                let tdDate = document.createElement('td')
-                let tdCategory = document.createElement('td')
-                let tdDescription = document.createElement('td')
-                let tdAmount = document.createElement('td')
-                let removeBtn = document.createElement('td')
+                    //Add values
+                    tdSr.innerHTML = i;
+                    tdDate.innerHTML = x.data().date.toDate().toDateString();
+                    tdCategory.innerHTML = x.data().category;
+                    tdDescription.innerHTML = x.data().description;
+                    tdAmount.innerHTML = `${x.data().amount} <i class=" green fas fa-arrow-up"></i> `;
+                    removeBtn.innerHTML = `<button class="btn btn-danger" onclick="removeTransaction('${x.id}')">Remove <i class="far fa-trash-alt"></i></button> `;
 
-                //Add values
-                tdSr.innerHTML = i
-                tdDate.innerHTML = x.data().date.toDate().toDateString()
-                tdCategory.innerHTML = x.data().category
-                tdDescription.innerHTML = x.data().description
-                tdAmount.innerHTML = `${x.data().amount} <i class=" green fas fa-arrow-up"></i> `
-                removeBtn.innerHTML = `<button class="btn btn-danger" onclick="removeTransaction('${x.id}')">Remove <i class="far fa-trash-alt"></i></button> `
-
-                //Appending Values
-                tr.append(tdSr)
-                tr.append(tdDate)
-                tr.append(tdCategory)
-                tr.append(tdDescription)
-                tr.append(tdAmount)
-                tr.append(removeBtn)
-                transactionTableBody.append(tr)
-
-
-
+                    //Appending Values
+                    tr.append(tdSr);
+                    tr.append(tdDate);
+                    tr.append(tdCategory);
+                    tr.append(tdDescription);
+                    tr.append(tdAmount);
+                    tr.append(removeBtn);
+                    transactionTableBody.append(tr);
+                }
             }
         })
     })
@@ -489,8 +481,8 @@ let byDate = () => {
 
     let localData = JSON.parse(localStorage.getItem('FinaceUser'));
     let currentUserId = localData.userId;
-    let dateFrom = document.getElementById('dateFrom').valueAsDate
-    let dateTo = document.getElementById('dateTo').valueAsDate
+    let dateFrom = document.getElementById('dateFrom').valueAsDate;
+    let dateTo = document.getElementById('dateTo').valueAsDate;
 
     if (dateTo && dateFrom) {
         let transactionTableBody = document.getElementById('transactionTableBody');
@@ -506,59 +498,59 @@ let byDate = () => {
                     if (x.data().expense == true) {
                         // if (x.data().transImg) {
                         //CReating Elements
-                        let tr = document.createElement('tr')
-                        let tdSr = document.createElement('td')
-                        let tdDate = document.createElement('td')
-                        let tdCategory = document.createElement('td')
-                        let tdDescription = document.createElement('td')
-                        let tdAmount = document.createElement('td')
-                        let removeBtn = document.createElement('td')
-                            //Add values
+                        let tr = document.createElement('tr');
+                        let tdSr = document.createElement('td');
+                        let tdDate = document.createElement('td');
+                        let tdCategory = document.createElement('td');
+                        let tdDescription = document.createElement('td');
+                        let tdAmount = document.createElement('td');
+                        let removeBtn = document.createElement('td');
+                        //Add values
                         tdSr.innerHTML = i
-                        tdDate.innerHTML = x.data().date.toDate().toDateString()
-                        tdCategory.innerHTML = x.data().category
-                        tdDescription.innerHTML = x.data().description
+                        tdDate.innerHTML = x.data().date.toDate().toDateString();
+                        tdCategory.innerHTML = x.data().category;
+                        tdDescription.innerHTML = x.data().description;
                         tdAmount.innerHTML = x.data().transImg ?
                             `${x.data().amount} <i class=" red fas fa-arrow-down"></i> <span class="badge badge-pill badge-light" onclick="
                             ('${x.id}')">Receipt</span>` :
                             `${x.data().amount} <i class=" red fas fa-arrow-down"></i> `;
                         removeBtn.innerHTML = `<button class="btn btn-danger" onclick="removeTransaction('${x.id}')">Remove <i class="far fa-trash-alt"></i></button> `
                             //Appending Values
-                        tr.append(tdSr)
-                        tr.append(tdDate)
-                        tr.append(tdCategory)
-                        tr.append(tdDescription)
-                        tr.append(tdAmount)
-                        tr.append(removeBtn)
-                        transactionTableBody.append(tr)
+                        tr.append(tdSr);
+                        tr.append(tdDate);
+                        tr.append(tdCategory);
+                        tr.append(tdDescription);
+                        tr.append(tdAmount);
+                        tr.append(removeBtn);
+                        transactionTableBody.append(tr);
 
                     } else {
 
                         //CReating Elements
-                        let tr = document.createElement('tr')
-                        let tdSr = document.createElement('td')
-                        let tdDate = document.createElement('td')
-                        let tdCategory = document.createElement('td')
-                        let tdDescription = document.createElement('td')
-                        let tdAmount = document.createElement('td')
-                        let removeBtn = document.createElement('td')
+                        let tr = document.createElement('tr');
+                        let tdSr = document.createElement('td');
+                        let tdDate = document.createElement('td');
+                        let tdCategory = document.createElement('td');
+                        let tdDescription = document.createElement('td');
+                        let tdAmount = document.createElement('td');
+                        let removeBtn = document.createElement('td');
 
                         //Add values
-                        tdSr.innerHTML = i
-                        tdDate.innerHTML = x.data().date.toDate().toDateString()
-                        tdCategory.innerHTML = x.data().category
-                        tdDescription.innerHTML = x.data().description
+                        tdSr.innerHTML = i;
+                        tdDate.innerHTML = x.data().date.toDate().toDateString();
+                        tdCategory.innerHTML = x.data().category;
+                        tdDescription.innerHTML = x.data().description;
                         tdAmount.innerHTML = `${x.data().amount} <i class=" green fas fa-arrow-up"></i> `
                         removeBtn.innerHTML = `<button class="btn btn-danger" onclick="removeTransaction('${x.id}')">Remove <i class="far fa-trash-alt"></i></button> `
 
                         //Appending Values
-                        tr.append(tdSr)
-                        tr.append(tdDate)
-                        tr.append(tdCategory)
-                        tr.append(tdDescription)
-                        tr.append(tdAmount)
-                        tr.append(removeBtn)
-                        transactionTableBody.append(tr)
+                        tr.append(tdSr);
+                        tr.append(tdDate);
+                        tr.append(tdCategory);
+                        tr.append(tdDescription);
+                        tr.append(tdAmount);
+                        tr.append(removeBtn);
+                        transactionTableBody.append(tr);
 
 
                     }
@@ -567,7 +559,7 @@ let byDate = () => {
     }
 
     //Single Querry
-    if (dateFrom) {
+    else if (dateFrom) {
         let transactionTableBody = document.getElementById('transactionTableBody');
         transactionTableBody.innerText = '';
 
@@ -641,7 +633,7 @@ let byDate = () => {
     }
 
     //Single Querry
-    if (dateTo) {
+    else if (dateTo) {
         let transactionTableBody = document.getElementById('transactionTableBody');
         transactionTableBody.innerText = '';
 
